@@ -60,6 +60,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "xterm", NULL };
 static const char *browser[]  = { "firefox", NULL };
 static const char *mail[]  = { "xterm","-e","neomutt", NULL };
+static const char *printscreen[]  = {"maim" , "-s" ,"/home/cerqueira/pic/print/$(date +%s).png",NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -79,7 +80,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -95,6 +95,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,  spawn,          {.v = browser} },
 	{ MODKEY,                       XK_e,  spawn,          {.v = mail} },
 
+	{ 0,                       XK_Print,  spawn,          {.v = printscreen} },
+
 	{ 0,                       0x1008ff12,      spawn,          SHCMD("pamixer -t") },
   { 0,                       0x1008ff13,      spawn,          SHCMD("pamixer -i 5")},
   { 0,                       0x1008ff11,      spawn,          SHCMD("pamixer -d 5" ) },
@@ -104,7 +106,7 @@ static Key keys[] = {
   { 0,                       0x1008ff15,      spawn,          SHCMD("playerctl stop")},
   { 0,                       0x1008ff16,      spawn,          SHCMD("playerctl previous")},
   { 0,                       0x1008ff17,      spawn,          SHCMD("playerctl next")},
-	{ MODKEY,                       XK_F12,     spawn,          SHCMD("powermenu.sh")},
+	{MODKEY,                       XK_F12,     spawn,          SHCMD("powermenu.sh")},
 };
 
 /* button definitions */
