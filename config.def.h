@@ -13,10 +13,25 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char branco[]        = "#ffffff";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  branco},
+static const char colors[NUMCOLORS][ColLast][17] = {
+    /* border    fg         bg */
+    { "#282828", "#928374", "#282828" },        /* [0]  01 - Client normal */
+    { "#ebdbb2", "#458588", "#282828" },        /* [1]  02 - Client selected */
+    { "#83a598", "#fb4934", "#282828" },        /* [2]  03 - Client urgent */
+    { "#83a598", "#83a598", "#282828" },        /* [3]  04 - Client occupied */
+    { "#282828", "#fb4934", "#282828" },        /* [4]  05 - Red */
+    { "#282828", "#fabd2f", "#282828" },        /* [5]  06 - Yellow */
+    { "#282828", "#b8bb26", "#282828" },        /* [6]  07 - Green */
+    { "#282828", "#928374", "#282828" },        /* [7]  08 - Dark grey */
+    { "#282828", "#d5c4a1", "#282828" },        /* [8]  09 - Light grey */
+    { "#928374", "#928374", "#282828" },        /* [9]  0A - Bar normal*/
+    { "#3c3836", "#a89985", "#282828" },        /* [10] 0B - Bar selected*/
+    { "#fb4934", "#fb4934", "#282828" },        /* [11] 0C - Bar urgent*/
+    { "#928374", "#458588", "#282828" },        /* [12] 0D - Bar occupied*/
+    { "#3c3836", "#3c3836", "#282828" },        /* [13] 0E - Tag normal*/
+    { "#83a598", "#83a598", "#282828" },        /* [14] 0F - Tag selected*/
+    { "#fb4934", "#fb4934", "#282828" },        /* [15] 10 - Tag urgent*/
+    { "#3c3836", "#928374", "#282828" },        /* [16] 11 - Tag occupied*/
 };
 /* tagging */
 static const char *tags[] = { "PRG", "WEB", "FILES", "COM", "MISC" };
@@ -59,6 +74,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *menu[] = { "dmenu_run", "-fn", dmenufont, "-nb", "#282828", "-nf", "#928374", "-sb", "#3c3836", "-sf", "#a89984", "-h", "22", NULL }; 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan , "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "xterm", NULL };
 static const char *browser[]  = { "firefox", NULL };
