@@ -7,32 +7,19 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka:size=10" };
 static const char dmenufont[]       = "Iosevka:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char branco[]        = "#ffffff";
-static const char colors[NUMCOLORS][ColLast][17] = {
-    /* border    fg         bg */
-    { "#282828", "#928374", "#282828" },        /* [0]  01 - Client normal */
-    { "#ebdbb2", "#458588", "#282828" },        /* [1]  02 - Client selected */
-    { "#83a598", "#fb4934", "#282828" },        /* [2]  03 - Client urgent */
-    { "#83a598", "#83a598", "#282828" },        /* [3]  04 - Client occupied */
-    { "#282828", "#fb4934", "#282828" },        /* [4]  05 - Red */
-    { "#282828", "#fabd2f", "#282828" },        /* [5]  06 - Yellow */
-    { "#282828", "#b8bb26", "#282828" },        /* [6]  07 - Green */
-    { "#282828", "#928374", "#282828" },        /* [7]  08 - Dark grey */
-    { "#282828", "#d5c4a1", "#282828" },        /* [8]  09 - Light grey */
-    { "#928374", "#928374", "#282828" },        /* [9]  0A - Bar normal*/
-    { "#3c3836", "#a89985", "#282828" },        /* [10] 0B - Bar selected*/
-    { "#fb4934", "#fb4934", "#282828" },        /* [11] 0C - Bar urgent*/
-    { "#928374", "#458588", "#282828" },        /* [12] 0D - Bar occupied*/
-    { "#3c3836", "#3c3836", "#282828" },        /* [13] 0E - Tag normal*/
-    { "#83a598", "#83a598", "#282828" },        /* [14] 0F - Tag selected*/
-    { "#fb4934", "#fb4934", "#282828" },        /* [15] 10 - Tag urgent*/
-    { "#3c3836", "#928374", "#282828" },        /* [16] 11 - Tag occupied*/
+static const char bg0[]	= "#1d2021";
+static const char bg1[]	= "#282828";
+static const char bg2[]	= "#3c3836";
+static const char fg0[]	= "#ebdbb2";
+static const char fg1[]	= "#fbf1c7";
+static const char black[]	= "#000000";
+static const char accent[]	= "#689d6a";
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] = { fg0, bg1, bg0 },
+	[SchemeSel]  = { black, bg1, accent },
 };
+
 /* tagging */
 static const char *tags[] = { "PRG", "WEB", "FILES", "COM", "MISC" };
 
@@ -74,12 +61,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *menu[] = { "dmenu_run", "-fn", dmenufont, "-nb", "#282828", "-nf", "#928374", "-sb", "#3c3836", "-sf", "#a89984", "-h", "22", NULL }; 
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan , "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", bg0, "-nf", fg0, "-sb", accent, "-sf", bg1, NULL };
 static const char *termcmd[]  = { "xterm", NULL };
 static const char *browser[]  = { "firefox", NULL };
 static const char *mail[]  = { "xterm","-e","neomutt", NULL };
-static const char *printscreen[]  = {"maim" , "-s" ,"/home/cerqueira/pic/print/$(date +%s).png",NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -114,7 +99,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,  spawn,          {.v = browser} },
 	{ MODKEY,                       XK_e,  spawn,          {.v = mail} },
 
-	{ 0,                       XK_Print,  spawn,          {.v = printscreen} },
+	{ 0,                       XK_Print,  spawn,          SHCMD("maim -s /home/cerqueira/pic/print/$(date +%s).png") },
 
 	{ 0,                       0x1008ff12,      spawn,          SHCMD("pamixer -t") },
   { 0,                       0x1008ff13,      spawn,          SHCMD("pamixer -i 5")},
