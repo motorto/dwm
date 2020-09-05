@@ -17,7 +17,7 @@ static const char accent[]	= "#689d6a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { fg0, bg1, bg0 },
-	[SchemeSel]  = { black, bg1, accent },
+	[SchemeSel]  = { fg0, black, accent },
 };
 
 /* tagging */
