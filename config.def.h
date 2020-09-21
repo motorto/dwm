@@ -35,6 +35,7 @@ static const Rule rules[] = {
     {NULL, "libreoffice", NULL, 1 << 2, 0, -1},
     {"zoom", "zoom", NULL, 1 << 3, 0, -1},
     {"Slack", NULL, NULL, 1 << 3, 0, -1},
+    {"XTerm", "xterm", "newsboat", 1 << 3, 0, -1},
     {"XTerm", "xterm", "neomutt", 1 << 3, 0, -1},
 };
 
@@ -74,6 +75,7 @@ static const char *dmenucmd[] = {"dmenu_run", "-m",  dmenumon, "-fn", dmenufont,
 static const char *termcmd[] = {"xterm", NULL};
 static const char *browser[] = {"firefox", NULL};
 static const char *mail[] = {"xterm", "-e", "neomutt", NULL};
+static const char *rss[] = {"xterm", "-e", "newsboat", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -104,6 +106,7 @@ static Key keys[] = {
     // My keys
     {MODKEY, XK_w, spawn, {.v = browser}},
     {MODKEY, XK_e, spawn, {.v = mail}},
+    {MODKEY, XK_r, spawn, {.v = rss}},
 
     {0, XK_Print, spawn,
      SHCMD("maim -s /home/cerqueira/pic/print/$(date +%s).png")},
