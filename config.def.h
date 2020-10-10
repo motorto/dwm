@@ -33,10 +33,11 @@ static const Rule rules[] = {
     {"Firefox", "Toolkit", "Picture-in-Picture", 1 << 1, 1, -1},
     {NULL, NULL, "LibreOffice", 1 << 2, 0, -1},
     {NULL, "libreoffice", NULL, 1 << 2, 0, -1},
-    {"zoom", "zoom", NULL, 1 << 3, 1, -1},
+    {"zoom", "zoom", NULL, 1 << 3, 0, -1},
     {"Slack", NULL, NULL, 1 << 3, 0, -1},
     {"XTerm", "xterm", "newsboat", 1 << 3, 0, -1},
     {"XTerm", "xterm", "neomutt", 1 << 3, 0, -1},
+    {"VirtualBox Manager", NULL, NULL, 1 << 4, 0, -1},
 };
 
 /* layout(s) */
