@@ -39,6 +39,7 @@ static const Rule rules[] = {
     {"XTerm", "xterm", "newsboat", 1 << 3, 0, -1},
     {"XTerm", "xterm", "neomutt", 1 << 3, 0, -1},
     {"VirtualBox Manager", NULL, NULL, 1 << 4, 0, -1},
+    {"keepassxc", NULL, NULL, 1 << 4, 0, -1},
 };
 
 /* layout(s) */
